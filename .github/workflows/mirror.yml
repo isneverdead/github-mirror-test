@@ -1,0 +1,15 @@
+name: Example
+on: 
+  schedule:
+    - cron: '0 0 1-31 * *'
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: mirror
+        uses: mathisve/git-mirror-action@v1.2
+        with:
+          originalURL: https://github.com/torvalds/linux.git
+          mirrorURL: https://github.com/isneverdead/github-test-mirror-target.git
+          pat: ${{ secrets.PAT }}
